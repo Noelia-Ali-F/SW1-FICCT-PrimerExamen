@@ -204,8 +204,6 @@ public class DevSeedConfig {
 
     seedUserIfMissing(users, encoder, solicitante.getId(), ti.getId(), "ana@local.test", "Ana Solicitante");
     seedUserIfMissing(users, encoder, aprobador.getId(), rrhh.getId(), "carlos@local.test", "Carlos Aprobador");
-    // Correo frecuente en pruebas: alinear a rol SOLICITANTE para ver tareas del demo "Solicitud de vacaciones".
-    ensureMvpDemoUser(users, encoder, solicitante.getId(), ti.getId(), "usuario@gmail.com");
     // Luis Gómez (capturas/demos): mismo rol/calle que las tareas demo por rol SOLICITANTE.
     ensureMvpDemoUser(users, encoder, solicitante.getId(), ti.getId(), "luis.gomez@local.test");
 
@@ -729,8 +727,6 @@ public class DevSeedConfig {
     makeKpiDataVisible(processInstances, tasks, active1.getId());
     makeKpiDataVisible(processInstances, tasks, active2.getId());
 
-    // Con paquete realista activo, las tareas abiertas suelen ir al rol EMPLEADO: mismo usuario de prueba.
-    ensureMvpDemoUser(users, encoder, empleado.getId(), operaciones.getId(), "usuario@gmail.com");
   }
 
   private static Department ensureDepartment(DepartmentRepository departments, String name, String description) {
@@ -997,4 +993,3 @@ public class DevSeedConfig {
     return Normalizer.normalize(t, Normalizer.Form.NFD).replaceAll("\\p{M}", "");
   }
 }
-
