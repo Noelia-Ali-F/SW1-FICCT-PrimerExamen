@@ -1,0 +1,19 @@
+# Plantilla para producción (copiar a docker-compose.prod.yml y ajustar secretos).
+# NO incluye seed de datos: la base debe estar poblada o migrada aparte.
+#
+# Uso sugerido:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.example.yml up -d --build
+#
+# O desplegar imágenes en Azure Container Apps / Cloud Run con las mismas variables.
+
+services:
+  backend:
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      APP_SECURITY_ENABLED: "true"
+      APP_JWT_SECRET: "REEMPLAZAR-CON-SECRETO-LARGO-MINIMO-32-CARACTERES"
+      SPRING_DATA_MONGODB_URI: "mongodb://mongo:27017/exsw1"
+      # IA opcional en prod:
+      # APP_AI_ASSISTANT_ENABLED: "true"
+      # APP_AI_PROVIDER: "openai"
+      # OPENAI_API_KEY: ""

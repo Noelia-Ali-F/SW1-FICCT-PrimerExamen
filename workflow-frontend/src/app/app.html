@@ -1,0 +1,260 @@
+<div *ngIf="showShell(); else authOnly" class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+          <path
+            d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path d="M8 8h8M8 12h8M8 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">Sistema Workflow</div>
+        <div class="brand-sub">Gestión de Políticas</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a routerLink="/dashboard" [class.active]="isDashboardActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        Dashboard
+      </a>
+
+      <a routerLink="/users" [class.active]="isUsersActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path
+              d="M4 20a8 8 0 0 1 16 0"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        Usuarios
+      </a>
+
+      <a routerLink="/roles" [class.active]="isRolesActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M12 3 14.2 8.8 20.5 9.3 15.8 13.2 17.2 19.5 12 16.2 6.8 19.5 8.2 13.2 3.5 9.3 9.8 8.8 12 3Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        Roles
+      </a>
+
+      <a routerLink="/departments" [class.active]="isDepartmentsActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M4 20V8l8-4 8 4v12"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+            <path d="M9 20V12h6v8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+          </svg>
+        </span>
+        Departamentos
+      </a>
+
+      <a routerLink="/policies" [class.active]="isPoliciesActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path d="M8 8h8M8 12h8M8 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </span>
+        Políticas de negocio
+      </a>
+
+      <a routerLink="/diagram-editor" [class.active]="isDiagramEditorActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M5 19V5M19 19V5M5 12h14"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+            <path d="M9 8h2M13 8h2M9 16h2M13 16h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </span>
+        Editor de diagramas
+      </a>
+
+      <a routerLink="/process-instances" [class.active]="isProcessInstancesActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path d="M8 9h8M8 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </span>
+        Trámites
+      </a>
+
+      <a routerLink="/my-tasks" [class.active]="isMyTasksActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M9 11.5 11 14l4-5"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+          </svg>
+        </span>
+        Mis actividades
+      </a>
+
+      <a routerLink="/monitoring" [class.active]="isMonitoringActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path d="M4 19V5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            <path d="M7 16l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        Monitoreo
+      </a>
+
+      <ng-container *ngIf="auth.reportsKpisAccess()">
+        <a routerLink="/reports" [class.active]="isReportsActive()">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+              <path d="M5 19V5M19 19V9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              <path d="M9 15v4M13 12v7M17 8v11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </span>
+          Reportes
+        </a>
+      </ng-container>
+
+      <a routerLink="/ai-assistant" [class.active]="isAiAssistantActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M12 3l1.6 4.9H19l-4 2.9 1.5 4.7L12 14.2 8.5 15.5 10 10.8 6 7.9h5.4L12 3Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        Asistente IA
+      </a>
+
+      <a routerLink="/settings" [class.active]="isSettingsActive()">
+        <span class="nav-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path
+              d="M19.4 13a7.7 7.7 0 0 0 .1-2l2-1.2-2-3.5-2.3.7a7.8 7.8 0 0 0-1.7-1l-.4-2.4H11l-.4 2.4a7.8 7.8 0 0 0-1.7 1L6.6 6.3l-2 3.5 2 1.2a7.7 7.7 0 0 0 0 2l-2 1.2 2 3.5 2.3-.7a7.8 7.8 0 0 0 1.7 1l.4 2.4h4.1l.4-2.4a7.8 7.8 0 0 0 1.7-1l2.3.7 2-3.5-2-1.2Z"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        Configuración
+      </a>
+    </nav>
+
+    <div class="sidebar-user" role="group" aria-label="Usuario">
+      <div class="sidebar-avatar" aria-hidden="true">{{ (auth.user()?.fullName ?? 'U').slice(0, 2).toUpperCase() }}</div>
+      <div class="sidebar-user-meta">
+        <div class="sidebar-user-name">{{ auth.user()?.fullName ?? 'Usuario' }}</div>
+        <div class="sidebar-user-role">{{ auth.user()?.email ?? '' }}</div>
+      </div>
+      <button type="button" class="icon-btn secondary" aria-label="Salir" (click)="auth.logout()">⎋</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="search">
+        <span class="search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+            <path
+              d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <path d="M16.2 16.2 21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </span>
+        <input
+          class="search-input"
+          placeholder="Buscar políticas, trámites, actividades..."
+          aria-label="Buscar"
+        />
+      </div>
+
+      <div class="topbar-actions">
+        <button type="button" class="icon-btn secondary" aria-label="Mensajes">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <path
+              d="M4 6h16v10H8l-4 3V6Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <app-notification-bell />
+
+        <div class="avatar" aria-label="Usuario">JP</div>
+      </div>
+    </header>
+
+    <div class="content">
+      <router-outlet />
+    </div>
+  </main>
+</div>
+
+<ng-template #authOnly>
+  <router-outlet />
+</ng-template>
+
+<app-contextual-assistant />

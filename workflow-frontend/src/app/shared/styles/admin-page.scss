@@ -1,0 +1,450 @@
+.page {
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+
+input,
+select {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}
+
+button {
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button.secondary {
+  font-weight: 600;
+}
+
+button.danger {
+  font-weight: 650;
+}
+
+button[disabled] {
+  opacity: 0.55;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.75;
+}
+
+.badge.badge-green {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.badge.badge-yellow {
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+.badge.badge-red {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.badge.badge-gray {
+  color: color-mix(in srgb, var(--text) 78%, var(--muted));
+  background: color-mix(in srgb, var(--panel-solid) 75%, transparent);
+  border-color: var(--border);
+}
+
+/* --- Estados fuertes (innovación Parte 2): badges y acentos --- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.status-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.75;
+}
+
+/* Políticas */
+.status-badge.status-draft {
+  color: #1e40af;
+  background: color-mix(in srgb, #dbeafe 88%, var(--panel-solid));
+  border-color: color-mix(in srgb, #93c5fd 70%, transparent);
+}
+.status-badge.status-active {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.status-badge.status-inactive {
+  color: color-mix(in srgb, var(--text) 55%, var(--muted));
+  background: color-mix(in srgb, var(--panel-solid) 82%, #94a3b8 12%);
+  border-color: var(--border);
+}
+
+/* Trámites (proceso) */
+.status-badge.status-created {
+  color: #1d4ed8;
+  background: color-mix(in srgb, #eff6ff 90%, var(--panel-solid));
+  border-color: color-mix(in srgb, #93c5fd 65%, transparent);
+}
+.status-badge.status-in-progress {
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+.status-badge.status-completed {
+  color: #166534;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.status-badge.status-cancelled {
+  color: color-mix(in srgb, var(--text) 55%, var(--muted));
+  background: color-mix(in srgb, var(--panel-solid) 85%, #94a3b8 10%);
+  border-color: var(--border);
+}
+
+/* Tareas */
+.status-badge.status-pending {
+  color: #c2410c;
+  background: #fff7ed;
+  border-color: #fdba74;
+}
+
+/* Trámites: acento en tarjeta (usar junto con .proc-card en página) */
+.proc-accent-created {
+  border-left: 4px solid #2563eb;
+}
+.proc-accent-in-progress {
+  border-left: 4px solid #f59e0b;
+}
+.proc-accent-completed {
+  border-left: 4px solid #22c55e;
+}
+.proc-accent-cancelled {
+  border-left: 4px solid #94a3b8;
+}
+
+/* Mis actividades: filas */
+.task-row-pending {
+  border-color: color-mix(in srgb, #fdba74 55%, var(--border)) !important;
+  background: color-mix(in srgb, #fff7ed 35%, var(--panel)) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, #fdba74 25%, transparent);
+}
+.task-row-in-progress {
+  border-color: color-mix(in srgb, #fde68a 70%, var(--border)) !important;
+  background: color-mix(in srgb, #fffbeb 40%, var(--panel)) !important;
+}
+.task-row-completed {
+  border-color: color-mix(in srgb, #bbf7d0 70%, var(--border)) !important;
+  background: color-mix(in srgb, #f0fdf4 35%, var(--panel)) !important;
+}
+.task-row-cancelled {
+  border-color: var(--border) !important;
+  opacity: 0.92;
+}
+
+/* Detalle trámite: tarjetas de métricas */
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--panel-solid);
+}
+.stat-card-total {
+  border-top: 3px solid #64748b;
+  background: color-mix(in srgb, var(--panel-solid) 92%, #64748b 8%);
+}
+.stat-card-pending {
+  border-top: 3px solid #ea580c;
+  background: color-mix(in srgb, var(--panel-solid) 92%, #fff7ed 14%);
+}
+.stat-card-in-progress {
+  border-top: 3px solid #f59e0b;
+  background: color-mix(in srgb, var(--panel-solid) 92%, #fffbeb 18%);
+}
+.stat-card-completed {
+  border-top: 3px solid #22c55e;
+  background: color-mix(in srgb, var(--panel-solid) 92%, #f0fdf4 16%);
+}
+.stat-card-cancelled {
+  border-top: 3px solid #94a3b8;
+  background: color-mix(in srgb, var(--panel-solid) 94%, #e2e8f0 10%);
+}
+.stat-card .n {
+  display: block;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+.stat-card .l {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Historial detalle */
+.timeline-item .dot {
+  background: #64748b;
+}
+.timeline-item-success .dot {
+  background: #22c55e;
+}
+.timeline-item-progress .dot {
+  background: #f59e0b;
+}
+.timeline-item-cancelled .dot {
+  background: #94a3b8;
+}
+.timeline-item-success .content {
+  border-color: color-mix(in srgb, #bbf7d0 80%, var(--border));
+}
+.timeline-item-progress .content {
+  border-color: color-mix(in srgb, #fde68a 75%, var(--border));
+}
+.timeline-item-cancelled .content {
+  border-color: var(--border);
+  opacity: 0.95;
+}
+
+/* Reportes: tonos KPI */
+.kpi-tone {
+  border-radius: var(--radius-md);
+}
+.kpi-tone-neutral {
+  border-top: 3px solid #64748b;
+}
+.kpi-tone-progress {
+  border-top: 3px solid #f59e0b;
+}
+.kpi-tone-success {
+  border-top: 3px solid #22c55e;
+}
+.kpi-tone-warning {
+  border-top: 3px solid #ea580c;
+}
+.kpi-tone-danger {
+  border-top: 3px solid #ef4444;
+}
+
+/* Resumen Mis actividades (tarjetas superiores) */
+.sum-card-pending {
+  border-top: 3px solid #ea580c;
+}
+.sum-card-in-progress {
+  border-top: 3px solid #f59e0b;
+}
+.sum-card-completed {
+  border-top: 3px solid #22c55e;
+}
+.sum-card-cancelled {
+  border-top: 3px solid #94a3b8;
+}
+
+/* Reportes: fila desglose por estado */
+.status-breakdown {
+  display: grid;
+  gap: 10px;
+}
+.breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel-solid) 88%, transparent);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 1100px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kanban-col {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+}
+
+.kanban-title {
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.count-pill {
+  font-size: 12px;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--panel-solid) 80%, transparent);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.task-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  display: grid;
+  gap: 8px;
+}
+
+.task-card + .task-card {
+  margin-top: 10px;
+}
+
+.task-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.task-name {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.task-meta {
+  font-size: 12px;
+  color: var(--muted);
+  display: grid;
+  gap: 2px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.success {
+  color: #166534;
+  font-size: 13px;
+}
+
+.error {
+  color: #991b1b;
+  font-size: 13px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  text-align: left;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-inactive {
+  color: #991b1b;
+  font-weight: 600;
+}
+
+tr.policy-inactive td {
+  background: #fef2f2;
+}
+
+td.nowrap {
+  white-space: nowrap;
+}

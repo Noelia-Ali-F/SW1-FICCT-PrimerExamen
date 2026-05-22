@@ -1,0 +1,36 @@
+spring:
+  data:
+    mongodb:
+      # Atlas (mongodb+srv): define la contraseña con MONGO_PASSWORD o pasa la cadena completa en SPRING_DATA_MONGODB_URI.
+      # En la URI, escapa caracteres especiales del password (Atlas → “Drivers” muestra URI lista).
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb+srv://${MONGO_USER:root}:${MONGO_PASSWORD}@cluster0.jaz8muk.mongodb.net/exsw1?retryWrites=true&w=majority&appName=Cluster0}
+
+app:
+  tasks:
+    lenient-my-tasks: ${APP_TASKS_LENIENT:false}
+  seed:
+    realistic: ${APP_SEED_REALISTIC:false}
+  ai:
+    baseUrl: ${APP_AI_BASEURL:http://localhost:8000}
+    assistant:
+      enabled: ${APP_AI_ASSISTANT_ENABLED:true}
+    # IA real (elige un provider)
+    # Provider: "openai" | "azure" | "gemini"
+    provider: ${APP_AI_PROVIDER:}
+    openai:
+      apiKey: ${OPENAI_API_KEY:}
+      baseUrl: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+      model: ${OPENAI_MODEL:gpt-4o-mini}
+    azure:
+      endpoint: ${AZURE_OPENAI_ENDPOINT:}
+      deployment: ${AZURE_OPENAI_DEPLOYMENT:}
+      apiVersion: ${AZURE_OPENAI_API_VERSION:2024-10-01-preview}
+    gemini:
+      apiKey: ${GEMINI_API_KEY:}
+      model: ${GEMINI_MODEL:gemini-1.5-flash}
+  jwt:
+    secret: ${APP_JWT_SECRET:change-me-in-prod}
+    ttlMinutes: ${APP_JWT_TTLMINUTES:240}
+  security:
+    enabled: ${APP_SECURITY_ENABLED:true}
+

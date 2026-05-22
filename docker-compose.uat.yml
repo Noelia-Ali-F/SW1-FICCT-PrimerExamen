@@ -1,0 +1,9 @@
+# UAT / pruebas con login (JWT) — perfil dev mantiene seed de admin.
+# Uso: docker compose -f docker-compose.yml -f docker-compose.uat.yml up -d --build
+#
+# Credenciales (sembradas en dev): admin@local.test / Admin123!
+
+services:
+  backend:
+    environment:
+      APP_SECURITY_ENABLED: "true"

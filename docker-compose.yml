@@ -1,0 +1,68 @@
+name: exsw1-2026
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: exsw1-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: exsw1
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "mongodb://localhost:27017/exsw1", "--eval", "db.runCommand({ ping: 1 }).ok"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 20s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: exsw1-backend
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      # Para probar "desde cero" sin bloquear UX (sin login en UI),
+      # usamos perfil dev con seed automático.
+      SPRING_PROFILES_ACTIVE: dev
+      SERVER_PORT: 8083
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/exsw1
+      APP_SECURITY_ENABLED: "false"
+      APP_JWT_SECRET: "change-me-in-prod"
+      APP_JWT_TTLMINUTES: "240"
+      APP_AI_BASEURL: "http://localhost:8000"
+      APP_SEED_REALISTIC: "${APP_SEED_REALISTIC:-false}"
+      # IA real (opcional). Si no se configura, el asistente usa el manual interno.
+      APP_AI_ASSISTANT_ENABLED: "true"
+      APP_AI_PROVIDER: "gemini"
+      GEMINI_API_KEY: "${GEMINI_API_KEY}"
+      GEMINI_MODEL: "${GEMINI_MODEL:-gemini-1.5-flash}"
+      # OpenAI/Azure (opcionales)
+      OPENAI_API_KEY: "${OPENAI_API_KEY}"
+      OPENAI_MODEL: "${OPENAI_MODEL:-gpt-4o-mini}"
+    ports:
+      - "8083:8083"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8083/api/health >/dev/null 2>&1 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+
+  frontend:
+    build:
+      context: ./workflow-frontend
+      dockerfile: Dockerfile
+    container_name: exsw1-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8086:80"
+
+volumes:
+  mongo_data:
+

@@ -1,0 +1,26 @@
+# --- Backend (Java/Maven) ---
+backend/target/
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# --- Frontend (Angular/Node) ---
+workflow-frontend/dist/
+**/dist/
+**/node_modules/
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.project
+.classpath
+.settings/
+.DS_Store
+Thumbs.db
+
+# --- Secrets / env ---
+.env
+.env.*
+
